@@ -4,13 +4,15 @@
 
 <u>**Instruções**</u>
 
+Após clonar este projeto, insira-o em uma pasta de sua preferência.
+
 
 
 **macOS**
 
 
 
-1- Instalar o Ruby: no terminal do seu Mac sugiro utilizar o homebrew para instalação via linha de comando. Com o terminal aberto digite:
+1- Instalar o Ruby: no terminal do seu Mac sugiro utilizar o *homebrew* para instalação via linha de comando. Com o terminal aberto digite:
 
 *brew install ruby*
 
@@ -18,23 +20,25 @@
 
 Após a instalação verifique se o ruby está corretamente instalado usando o comando ruby -v.
 
+2- Já na pasta do projeto, utilize o comando *bundle install* para instalar as gems.
 
 
-2- Instalar o RSpec:
+
+3- Por via das dúvidas, instale o RSpec:
 
 *sudo gem install rspec*
 
 
 
-3- Instalar o Capybara:
+3- Instale o Capybara:
 
 *sudo gem install capybara*
 
 
 
-4- Instalar o Newman
+4- Instale o Newman
 
-*sudo gem install newman*
+*brew install newman*
 
 
 
