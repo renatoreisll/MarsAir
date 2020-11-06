@@ -1,0 +1,328 @@
+{
+	"info": {
+		"_postman_id": "2d9e461f-4f3b-4c7a-8df3-9bc9d7b35111",
+		"name": "MarsAir",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Pesquisar Viagem com assento disponível (cod. desconto válido)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "88eaf0ac-d633-419e-96cd-202d2258a089",
+						"exec": [
+							"pm.test(\"Retorno do tipo 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Tempo de resposta menor que 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Período disponível \", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Seats available\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Código de desconto válido \", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"discount\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "departing",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "returning",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "promotional_code",
+							"value": "JJ5-OPQ-319",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://marsair.thoughtworks-labs.net/renatofranca",
+					"protocol": "https",
+					"host": [
+						"marsair",
+						"thoughtworks-labs",
+						"net"
+					],
+					"path": [
+						"renatofranca"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pesquisar Viagem com assento disponível sem desconto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4381aecf-2864-4e88-a1bd-e6a7bb27149b",
+						"exec": [
+							"pm.test(\"Retorno do tipo 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Tempo de resposta menor que 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Período disponível \", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Call now on 0800 MARSAIR to book!\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "departing",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "returning",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "promotional_code",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://marsair.thoughtworks-labs.net/renatofranca",
+					"protocol": "https",
+					"host": [
+						"marsair",
+						"thoughtworks-labs",
+						"net"
+					],
+					"path": [
+						"renatofranca"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pesquisar Viagem com período inválido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f46b69f1-2fdb-4450-8f9f-b9e94b67b9bd",
+						"exec": [
+							"pm.test(\"Retorno do tipo 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Tempo de resposta menor que 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Período inválido\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Unfortunately, this schedule is not possible\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "departing",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "returning",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "promotional_code",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://marsair.thoughtworks-labs.net/renatofranca",
+					"protocol": "https",
+					"host": [
+						"marsair",
+						"thoughtworks-labs",
+						"net"
+					],
+					"path": [
+						"renatofranca"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pesquisar Viagem sem assento disponível",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "120d150b-1e87-4ca8-9db5-e71044584431",
+						"exec": [
+							"pm.test(\"Retorno do tipo 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Tempo de resposta menor que 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Sem assento disponível \", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Sorry, there are no more seats available\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "departing",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "returning",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "promotional_code",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://marsair.thoughtworks-labs.net/renatofranca",
+					"protocol": "https",
+					"host": [
+						"marsair",
+						"thoughtworks-labs",
+						"net"
+					],
+					"path": [
+						"renatofranca"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pesquisar Viagem com assento disponível (cod. desconto inválido)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c01c98ae-4df4-42a6-ac4d-253d68df3c73",
+						"exec": [
+							"pm.test(\"Retorno do tipo 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Tempo de resposta menor que 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Período disponível \", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Seats available\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Código de desconto inválido \", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"is not valid\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "departing",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "returning",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "promotional_code",
+							"value": "XX1-ZZZ-123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://marsair.thoughtworks-labs.net/renatofranca",
+					"protocol": "https",
+					"host": [
+						"marsair",
+						"thoughtworks-labs",
+						"net"
+					],
+					"path": [
+						"renatofranca"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
